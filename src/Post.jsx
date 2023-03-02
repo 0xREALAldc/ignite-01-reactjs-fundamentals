@@ -1,5 +1,10 @@
-function Post() {
-  return <p>Post</p>
+function Post(props) {
+  return(
+    <div>
+      <strong>{ props.author }</strong>
+      <p>{ props.content }</p>
+    </div>
+  )
 }
 
 export default Post;
