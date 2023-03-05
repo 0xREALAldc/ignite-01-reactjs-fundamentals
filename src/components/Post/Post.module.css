@@ -1,0 +1,72 @@
+.post {
+  background: var(--gray-800);
+  border-radius: 8px;
+  padding: 4rem;
+}
+
+/* in the line below we're going to use the '+' sign, and this means that this CSS that's comming below will only be applied to elements
+   that have one of that element before it. In our case will be '.post + .post', so this CSS will only be applied to a element that 
+   has the className '.post' and that had a element before that also has a className of '.post' */
+.post + .post {
+  margin-top: 3.2rem;
+}
+
+.content {
+  line-height: 1.6;
+  color: var(--gray-300);
+  margin-top: 2.4rem;
+}
+
+.content p {
+  margin-top: 1.6rem;
+}
+
+.content p a {
+  font-weight: bold;
+  color: var(--green-500);
+  text-decoration: none;
+}
+
+.content p a:hover {
+  color: var(--green-300);
+}
+
+/* the use of the '>' sign means that the CSS will only be applied to the 'header' tags found in the first level of the tree elements, 
+meaning that will apply the css to the header '<post> <header>...' and not to the '<post> <footer> <header> ...' */
+.post > header { 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post > header time {
+  font-size: 1.4rem;
+  color: var(--gray-400);
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.author img {
+  width: calc(4rem + 12px);
+  height: calc(4rem + 12px);
+  border-radius: 8px;
+  border: 4px solid var(--gray-800);
+  outline: 2px solid var(--green-500);
+}
+
+.authorInfo strong {
+  display: block; /* this display will force the element to break the line, not be 'inline' as default */
+  color: var(--gray-100);
+  line-height: 1.6;
+}
+
+.authorInfo span {
+  display: block; /* this display will force the element to break the line, not be 'inline' as default */
+  font-size: 1.4rem;
+  color: var(--gray-400);
+  line-height: 1.6;
+}
