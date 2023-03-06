@@ -19,21 +19,6 @@
                                            half of the value of the height (-1.6rem) and half the sum of the 'border' and 'outline' values (6px is half of the sum that is 12px) */
 }
 
-.avatar {
-  /* this proeprty when we use 'initial' makes the tag use extra space when we add 'margin and padding', stuff that add extra space , 
-     different from 'box-sizing' that makes the element shirink inside it's borders, with initial the element can 'grow' more */
-  box-sizing: initial; 
-  width: 4.8rem;
-  height: 4.8rem;
-  /* we can use calc to solve the problem that was resolved using 'box-sizing: initial', where we would add the values that we put for 'border' and 'outline' in our 'width' and 'height' */
-  /* width: calc(4.8rem + 12px);
-    height: calc(4.8rem + 12px); */
-
-  border-radius: 8px;
-  border: 4px solid var(--gray-800);
-  outline: 2px solid var(--green-500);
-}
-
 .profile strong {
   margin-top: 1.6rem;
   color: var(--gray-100);
@@ -69,7 +54,7 @@
   justify-content: center;
 
   /*  this line is to put a space between the Icon and the text in the 'button' */
-  gap: 0.8rem; 
+  gap: 0.7rem; 
 
   /* this line is to let more smooth the change of colors for the HOVER below */
   transition: color 0.1s, background-color 0.1s;
