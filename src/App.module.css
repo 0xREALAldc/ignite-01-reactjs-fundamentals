@@ -4,7 +4,17 @@
   padding: 0 1.6rem; 
 
   display: grid;
-  grid-template-columns: 256px 1fr; /* the first column will have the size fixed in 256px and the second the '1fr' means it'll adapt to what has left in the screen space */
+  /* the first column will have the size fixed in 256px and the second the '1fr' means it'll adapt to what has left in the screen space */
+  grid-template-columns: 256px 1fr; 
   gap: 3.2rem;
-  align-items: flex-start; /* this is to make the items start from the top, and not leave them try to have the same sizes, because the default value here is 'stretch'  */
+  /* this is to make the items start from the top, and not leave them try to have the same sizes, because the default value here is 'stretch'  */
+  align-items: flex-start; 
+}
+
+/* this will appply to mobile devices only */
+/* This will make our page be 'responsive', because it will only have one column and the 'side bar' will stay above the 'posts' */
+@media (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+  }
 }

@@ -5,6 +5,51 @@ import { Post } from './components/Post/Post';
 import styles from './App.module.css'
 import './global.css'
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: "https://github.com/ErickWendel.png",
+      name: "Erick Wendel",
+      role: "Entrepreneur"
+    },
+    content: [
+      { type: "paragraph", content: "Hey guuuuuuys, whats upp?" },
+      { type: "paragraph", content: "It's released NOW the 7th JS Expert week. Go and have fun, also leave a comment below to show some love!!!" },
+      { type: 'link', content: "expertJSweek.com"},
+    ],
+    publishedAt: new Date('2023-03-07 17:23:11'),
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: "https://github.com/0xREALaldc.png",
+      name: "Andre Luiz Donatti Costim",
+      role: "Developer"
+    },
+    content: [
+      { type: "paragraph", content: "Hey guys 👋" },
+      { type: "paragraph", content: "I've just uploaded one more project to my portfolio. It's a project that I did in a one week program called NLW Return, a event presented by Rocketseat. The name of the project is DoctorCare" },
+      { type: 'link', content: "0xREALaldc.design/doctorcare"},
+    ],
+    publishedAt: new Date('2023-03-01 14:32:33'),
+  },
+  {
+    id: 3,
+    author: {
+      avatarUrl: "https://github.com/diego3g.png",
+      name: "Diego Fernandes",
+      role: "CTO @Rocketseat"
+    },
+    content: [
+      { type: "paragraph", content: "Hey guys 👋" },
+      { type: "paragraph", content: "I've just uploaded one more project to my portfolio. It's a project that I did in a one week program called NLW Return, a event presented by Rocketseat. The name of the project is DoctorCare" },
+      { type: 'link', content: "diego3g.design/doctorcare"},
+    ],
+    publishedAt: new Date('2023-03-04 20:17:11'),
+  },
+];
+
 export function App() {
 
   return (
@@ -16,16 +61,16 @@ export function App() {
         <Sidebar />
 
         <main>
-          <Post 
-          // in our components we can pass for it what is called 'properties', that you can see kind like 'attributes' in html
-            author="0xREALaldc" 
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, illum harum perspiciatis sequi facilis vero impedit repellendus placeat. Aspernatur praesentium ea doloribus veniam dignissimos asperiores consectetur voluptate repudiandae, eaque amet."
-          />
-          <Post 
-          // in our components we can pass for it what is called 'properties', that you can see kind like 'attributes' in html
-            author="0xREALaldc" 
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, illum harum perspiciatis sequi facilis vero impedit repellendus placeat. Aspernatur praesentium ea doloribus veniam dignissimos asperiores consectetur voluptate repudiandae, eaque amet."
-          />
+          {posts.map( post => { 
+            return (
+              <Post 
+                key={post.id}
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            ) 
+          })}
         </main>
       </div>
     </div>
