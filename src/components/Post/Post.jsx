@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { format, formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 // import ptBR from 'date-fns/locale/pt-BR'
@@ -7,20 +8,25 @@ import { Comment } from '../Comment/Comment'
 import styles from './Post.module.css'
                      
                       //destructuring
-export function Post({ author, content, publishedAt }) {                     // here we put the locale that we choose to convert to the location of the user
+export function Post({ author, content, publishedAt }) {    
+  const [comments, setComments] = useState([
+    'Great milestone man, cheers!'
+  ])
+                                                                                 // here we put the locale that we choose to convert to the location of the user
   const publishedDateFormatted = format(publishedAt, "d 'of' LLLL 'at' h:mm"/*, { locale: ptBR,  }*/)
   const publishedDateRelativeToNow = formatDistanceToNow(publishedAt,  { 
     addSuffix: true,
     /*locale: ptBR */ 
   }) // also can pass it here the 'locale'
 
-  const comments = [
-    1,
-    2,
-  ]
 
   function handleCreateNewComment() {
     event.preventDefault()
+
+    const newCommentText = event.target.comment.value
+
+    setComments([...comments, newCommentText])
+    event.target.comment.value = ''
   }
 
   return (
@@ -53,6 +59,7 @@ export function Post({ author, content, publishedAt }) {                     // 
         <strong>Leave a feedback</strong>
 
         <textarea 
+          name='comment'
           placeholder='Leave a comment'
         />
 
@@ -64,7 +71,7 @@ export function Post({ author, content, publishedAt }) {                     // 
       <div className={styles.commentList}>
         {comments.map( comment => {
           return (
-            <Comment />
+            <Comment content={comment}/>
           )
         })}
       </div>
