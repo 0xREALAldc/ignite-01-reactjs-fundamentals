@@ -12,6 +12,7 @@ export function Post({ author, content, publishedAt }) {
   const [comments, setComments] = useState([
     'Great milestone man, cheers!'
   ])
+  const [newCommentText, setNewCommentText] = useState('');
                                                                                  // here we put the locale that we choose to convert to the location of the user
   const publishedDateFormatted = format(publishedAt, "d 'of' LLLL 'at' h:mm"/*, { locale: ptBR,  }*/)
   const publishedDateRelativeToNow = formatDistanceToNow(publishedAt,  { 
@@ -23,10 +24,12 @@ export function Post({ author, content, publishedAt }) {
   function handleCreateNewComment() {
     event.preventDefault()
 
-    const newCommentText = event.target.comment.value
-
     setComments([...comments, newCommentText])
-    event.target.comment.value = ''
+    setNewCommentText('')
+  }
+
+  function handleNewCommentChange() {
+    setNewCommentText(event.target.value)
   }
 
   return (
@@ -48,9 +51,9 @@ export function Post({ author, content, publishedAt }) {
       <div className={styles.content}>
         {content.map(line => {
           if (line.type === 'paragraph') {
-            return <p>{line.content}</p>;
+            return <p key={line.content}>{line.content}</p>;
           } else if (line.type === 'link') {
-            return <p><a href="#">{line.content}</a></p>
+            return <p key={line.content}><a href="#">{line.content}</a></p>
           }
         })}
       </div>
@@ -61,6 +64,8 @@ export function Post({ author, content, publishedAt }) {
         <textarea 
           name='comment'
           placeholder='Leave a comment'
+          value={newCommentText}
+          onChange={handleNewCommentChange}
         />
 
         <footer>
@@ -71,7 +76,7 @@ export function Post({ author, content, publishedAt }) {
       <div className={styles.commentList}>
         {comments.map( comment => {
           return (
-            <Comment content={comment}/>
+            <Comment key={comment} content={comment}/>
           )
         })}
       </div>
