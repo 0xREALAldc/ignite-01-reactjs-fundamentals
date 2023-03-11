@@ -113,9 +113,15 @@ meaning that will apply the css to the header '<post> <header>...' and not to th
 
   transition: background-color 0.1s;
 }
-
-.commentForm button[type=submit]:hover {
+/* the hover will only work when the button is not 'disabled'  */
+.commentForm button[type=submit]:not(:disabled):hover {
   background: var(--green-300); 
+}
+
+/* when the button is 'disabled' changes the opacity */
+.commentForm button[type=submit]:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .commentList {
